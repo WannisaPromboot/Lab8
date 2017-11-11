@@ -21,19 +21,15 @@ namespace GDIPlus_1
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            //draw
-            Rectangle rect = new Rectangle(10, 10, 100, 100);
-            g.DrawEllipse (Pens.Purple, rect);
-            //fill
-            Rectangle rect1 = new Rectangle(10, 120, 100, 100);
-            g.DrawEllipse(Brushes.DeepPink ,rect);
-            //draw
-            Rectangle rect2 = new Rectangle(150, 10, 120, 100);
-            g.DrawEllipse(Pens.DarkSlateBlue , rect2);
-            //fill
-            Rectangle rect3 = new Rectangle(150, 120, 120, 100);
-            g.DrawEllipse(Brushes.Firebrick , rect3);
 
+            // draw with dashline
+            Pen penEllipse = new Pen(Color.Brown);
+            penEllipse.DashStyle = DashStyle.Dash;
+            g.DrawEllipse(penEllipse, 20, 20, 200, 150);
+
+            Pen penArc = new Pen(Color.Magenta, 2);
+            g.DrawArc(penArc, 20, 20, 200, 150, 90, 180);
+            
             g.Dispose();
 
 
@@ -42,8 +38,5 @@ namespace GDIPlus_1
         }
     }
 
-    internal class Hatchstyle
-    {
-        public static HatchStyle DrakVertical { get; internal set; }
-    }
+    
 }
